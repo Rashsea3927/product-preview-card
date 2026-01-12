@@ -1,7 +1,28 @@
 ---
+import ProductImage from '@/components/ProductImage.astro';
+import IconCart from '@assets/icon-cart.svg';
+import desktopImg from '@assets/image-product-desktop.jpg';
+import mobileImg from '@assets/image-product-mobile.jpg';
 import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
 ---
 
 <Layout>
-  <h1>Product Preview Card</h1>
+  <main class="bg-cream flex min-h-screen items-center justify-center">
+    <div class="mx-auto w-[350px] overflow-hidden rounded-lg bg-white sm:grid sm:w-[600px] sm:grid-cols-2">
+      <div class="h-[350px] w-full sm:h-auto">
+        <ProductImage mobileImgUrl={mobileImg} desktopImgUrl={desktopImg} alt="" />
+      </div>
+      <div class="space-y-6 p-8">
+        <p class="text-gray text-xs leading-tight tracking-wide uppercase">Perfume</p>
+        <h1 class="font-fraunces text-3xl leading-none font-bold text-black">Gabrielle Essence Eau De Parfum</h1>
+        <p class="text-gray leading-wide text-sm">A floral, solar and voluptuous interpretation composed by Olivier Polge, Perfumer-Creator for the House of CHANEL.</p>
+        <p class="font-fraunces flex items-center gap-4 text-3xl leading-none text-green-500">$149.99 <span class="text-gray font-montserrat text-[13px] leading-tight font-medium line-through">$169.99</span></p>
+        <button class="font-montserrat leading-tighter inline-flex h-[50px] w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-green-500 text-sm text-white transition-colors hover:bg-green-700">
+          <Image src={IconCart} alt="Cart" class="h-auto w-[18px]" />
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </main>
 </Layout>
